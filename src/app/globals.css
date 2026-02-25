@@ -25,26 +25,22 @@ body {
   position: relative;
 }
 
-body::before {
+/* ===== Global Glitter Overlay ===== */
+html::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image: 
-    radial-gradient(2px 2px at 20% 30%, #d9b45f, rgba(217, 180, 95, 0)),
-    radial-gradient(2px 2px at 60% 70%, #b8892c, rgba(184, 137, 44, 0)),
-    radial-gradient(1px 1px at 50% 50%, #f6e7b0, rgba(246, 231, 176, 0)),
-    radial-gradient(1px 1px at 80% 10%, #d9b45f, rgba(217, 180, 95, 0)),
-    radial-gradient(2px 2px at 90% 60%, #b8892c, rgba(184, 137, 44, 0));
-  background-size: 200% 200%, 150% 150%, 180% 180%, 220% 220%, 170% 170%;
-  background-position: 0% 0%, 40% 60%, 130% 270%, 70% 100%, 150% 50%;
+    radial-gradient(circle, rgba(255, 215, 0, 0.8) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 223, 0, 0.6) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 235, 50, 0.7) 1px, transparent 1px);
+  background-size: 200px 200px, 150px 180px, 250px 220px;
   pointer-events: none;
-  animation: amo-glitter 4s ease-in-out infinite;
-  z-index: 1;
+  animation: amo-glitter 15s linear infinite;
+  z-index: 9999;
 }
 
+/* ===== Fade Up Keyframes ===== */
 @keyframes amo-fade-up {
   from {
     opacity: 0;
@@ -56,17 +52,135 @@ body::before {
   }
 }
 
+/* ===== Glitter Pulse Animation ===== */
 @keyframes amo-glitter {
-  0%, 100% {
-    opacity: 0.02;
+  0% {
+    background-position: 0 -200px, 50px -100px, 100px -150px;
+    opacity: 0.5;
   }
-  50% {
-    opacity: 0.08;
+  100% {
+    background-position: 0 800px, 50px 900px, 100px 850px;
+    opacity: 0.7;
   }
 }
 
+/* ===== Page Enter Animation ===== */
 .amo-page-enter {
   animation: amo-fade-up 280ms ease-out;
+}
+
+/* ===== Mouse Trail Particles ===== */
+.gold-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 1), rgba(255, 223, 0, 0.6));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: particle-float 1s ease-out forwards;
+}
+
+.gold-particle.magnetic {
+  animation: particle-magnetic 1.2s ease-out forwards;
+}
+
+@keyframes particle-float {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.3);
+  }
+}
+
+@keyframes particle-magnetic {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(var(--target-x), var(--target-y)) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--target-x), var(--target-y)) scale(0);
+  }
+}
+
+/* ===== Scroll Particles ===== */
+.scroll-particle {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 235, 50, 0.5));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: scroll-particle-float 1.5s ease-out forwards;
+}
+
+@keyframes scroll-particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px) scale(1.5);
+  }
+}
+
+/* ===== Click Explosion Particles ===== */
+.explosion-particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 1), rgba(255, 235, 50, 0.8));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: particle-explode 0.8s ease-out forwards;
+}
+
+@keyframes particle-explode {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0.2);
+  }
+}
+
+/* ===== Smoke Particles ===== */
+.smoke-particle {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4), rgba(255, 235, 50, 0.2), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  animation: smoke-float 1.5s ease-out forwards;
+}
+
+@keyframes smoke-float {
+  0% {
+    opacity: 0.6;
+    transform: translate(0, 0) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(2);
+  }
 }
 
 a {
@@ -81,6 +195,7 @@ a {
 
 .amo-page {
   min-height: 100vh;
+  position: relative;
 }
 
 .amo-header {
@@ -149,6 +264,11 @@ a {
   margin-bottom: 1.2rem;
 }
 
+h1, h2 {
+  position: relative;
+  animation: text-shimmer 3.5s ease-in-out infinite;
+}
+
 .amo-hero h1 {
   font-size: clamp(2.8rem, 11vw, 9rem);
   line-height: 0.95;
@@ -168,6 +288,15 @@ a {
   line-height: 0.95;
   letter-spacing: 0.06em;
   margin: 0;
+}
+
+@keyframes text-shimmer {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 30px rgba(255, 235, 50, 0.2);
+  }
 }
 
 .amo-section h3 {
@@ -236,6 +365,13 @@ a {
   height: 320px;
   object-fit: contain;
   background: transparent;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.amo-product-card img:hover,
+.amo-product-image:hover {
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 235, 50, 0.2));
+  transform: scale(1.02);
 }
 
 .amo-story-image {
@@ -250,6 +386,11 @@ a {
   object-fit: contain;
   background: transparent;
   border: none;
+  transition: filter 0.3s ease;
+}
+
+.amo-potion-image:hover {
+  filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 50px rgba(255, 235, 50, 0.2));
 }
 
 .amo-mini-potion-image {
@@ -257,6 +398,11 @@ a {
   object-fit: contain;
   border: none;
   background: transparent;
+  transition: filter 0.3s ease;
+}
+
+.amo-mini-potion-image:hover {
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 235, 50, 0.2));
 }
 
 .amo-mini-story-split {
@@ -451,6 +597,12 @@ a {
   object-fit: contain;
   background: transparent;
   border: none;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.amo-product-detail > img:hover {
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 60px rgba(255, 235, 50, 0.3));
+  transform: scale(1.02);
 }
 
 .amo-flow {
