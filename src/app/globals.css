@@ -22,6 +22,27 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   letter-spacing: 0.01em;
   text-rendering: geometricPrecision;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #d9b45f, rgba(217, 180, 95, 0)),
+    radial-gradient(2px 2px at 60% 70%, #b8892c, rgba(184, 137, 44, 0)),
+    radial-gradient(1px 1px at 50% 50%, #f6e7b0, rgba(246, 231, 176, 0)),
+    radial-gradient(1px 1px at 80% 10%, #d9b45f, rgba(217, 180, 95, 0)),
+    radial-gradient(2px 2px at 90% 60%, #b8892c, rgba(184, 137, 44, 0));
+  background-size: 200% 200%, 150% 150%, 180% 180%, 220% 220%, 170% 170%;
+  background-position: 0% 0%, 40% 60%, 130% 270%, 70% 100%, 150% 50%;
+  pointer-events: none;
+  animation: amo-glitter 4s ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes amo-fade-up {
@@ -32,6 +53,15 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes amo-glitter {
+  0%, 100% {
+    opacity: 0.02;
+  }
+  50% {
+    opacity: 0.08;
   }
 }
 
