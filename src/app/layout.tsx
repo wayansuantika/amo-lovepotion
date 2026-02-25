@@ -36,6 +36,12 @@ export const metadata: Metadata = {
     title: siteName,
     description: "Experience Love in a Bottle",
   },
+  icons: {
+    icon: [
+      { url: "/logo.avif", type: "image/avif" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
   robots: {
     index: true,
     follow: true,

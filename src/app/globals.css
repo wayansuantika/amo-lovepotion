@@ -160,7 +160,7 @@ a {
 
 .amo-cta {
   display: inline-block;
-  margin-top: 1.6rem;
+  margin-top: 0.6rem;
   border: 1px solid #d5cdbb;
   padding: 0.78rem 1.1rem;
   text-transform: uppercase;
@@ -183,7 +183,6 @@ a {
 }
 
 .amo-cta:focus-visible,
-.amo-link-card:focus-visible,
 .amo-flow a:focus-visible,
 .amo-nav-link:focus-visible {
   outline: 1px solid #d5cdbb;
@@ -217,7 +216,7 @@ a {
 }
 
 .amo-potion-image {
-  height: 460px;
+  /* height: 460px; */
   object-fit: contain;
   background: transparent;
   border: none;
@@ -270,6 +269,51 @@ a {
 
 .amo-story-copy p + p {
   margin-top: 1.2rem;
+}
+
+.amo-product-details {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.amo-details-title {
+  margin: 0 0 1.2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.amo-details-icons {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.amo-detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.amo-detail-item img {
+  opacity: 0.8;
+  filter: brightness(0) invert(1);
+}
+
+.amo-detail-icon {
+  opacity: 0.8 !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+.amo-detail-item span {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .amo-story-split-secondary {
@@ -354,6 +398,7 @@ a {
   justify-content: space-between;
   gap: 0.8rem;
   flex-wrap: wrap;
+  padding: 0.4rem 0;
 }
 
 .amo-link {
@@ -363,29 +408,6 @@ a {
   letter-spacing: 0.16em;
 }
 
-.amo-link-grid {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-  max-width: 760px;
-}
-
-.amo-link-card {
-  border: 1px solid var(--line);
-  padding: 1rem;
-  color: #e8e1d3;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.76rem;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.amo-link-card:hover {
-  background: #f4f0e8;
-  color: #101010;
-}
-
 .amo-product-detail {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -393,7 +415,7 @@ a {
   align-items: center;
 }
 
-.amo-product-detail img {
+.amo-product-detail > img {
   width: 100%;
   height: 420px;
   object-fit: contain;
@@ -461,11 +483,6 @@ a {
     text-align: center;
   }
 
-  .amo-link-grid {
-    grid-template-columns: 1fr;
-    margin-top: 1.25rem;
-  }
-
   .amo-product-detail {
     grid-template-columns: 1fr;
   }
@@ -491,6 +508,10 @@ a {
 
   .amo-mini-story-split {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .amo-details-icons {
     gap: 1.2rem;
   }
 
@@ -554,12 +575,6 @@ a {
 
   .amo-title {
     font-size: clamp(1.45rem, 9vw, 2rem);
-  }
-
-  .amo-link-card {
-    padding: 0.8rem;
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
   }
 
   .amo-product-card {

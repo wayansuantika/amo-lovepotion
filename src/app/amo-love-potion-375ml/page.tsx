@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Section, SiteShell } from "@/components/site-shell";
 import { createPageMetadata } from "@/lib/seo";
 import { products, whatsappLink } from "@/lib/site-data";
@@ -35,7 +36,23 @@ export default function Product375Page() {
             >
               Buy on WhatsApp
             </a>
-            <p className="amo-trust">Official AMO channel • Fast response</p>
+            <div className="amo-product-details">
+              <h4 className="amo-details-title">Details</h4>
+              <div className="amo-details-icons">
+                <div className="amo-detail-item">
+                  <Image src="/box.svg" alt="375ml" width={20} height={20} className="amo-detail-icon" />
+                  <span>375ml</span>
+                </div>
+                <div className="amo-detail-item">
+                  <Image src="/grape.svg" alt="Moscato" width={20} height={20} className="amo-detail-icon" />
+                  <span>Moscato</span>
+                </div>
+                <div className="amo-detail-item">
+                  <Image src="/fruit.svg" alt="Fruit notes" width={20} height={20} className="amo-detail-icon" />
+                  <span>Fruity</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Section>

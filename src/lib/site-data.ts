@@ -10,7 +10,7 @@ export const products = [
     oldPrice: "Rp329000.00",
     newPrice: "Rp249000.00",
     subtitle: "Love Potion in Bottle",
-    image: "/images/amo-325ml.avif",
+    image: "/images/Amo%20Small%20Bottle.png",
   },
   {
     slug: "amo-love-potion-750ml",
@@ -18,7 +18,7 @@ export const products = [
     oldPrice: "Rp714000.00",
     newPrice: "Rp499000.00",
     subtitle: "Love Potion in Bottle",
-    image: "/images/amo-750ml.avif",
+    image: "/images/Amo%20Bottle.png",
   },
 ] as const;
 
