@@ -27,6 +27,15 @@ export default function MissingMomentsPage() {
         <div className="amo-carousel">
           <div className="amo-carousel-item">
             <Image
+              src="/images/amo-bottle.jpg"
+              alt="AMO bottle classic"
+              width={160}
+              height={240}
+              className="amo-carousel-image"
+            />
+          </div>
+          <div className="amo-carousel-item">
+            <Image
               src="/images/agenesmo-amo-bottle.avif"
               alt="AMO bottle"
               width={160}
